@@ -1,0 +1,33 @@
+\subsection*{\uline{Ejercicio3}}
+Sea $\mathcal{E} = \{ \forall x (\forall y (P(y) \rightarrow Q(x)) \rightarrow R(x)), \forall x (\exists y P(y) \rightarrow S(x)), \forall x (S(x) \rightarrow \exists y T(y)), \exists x \neg R(x), \forall y \neg T(y) \}$. \\
+    Pruebe que $\mathcal{E} \vdash \exists x \neg Q(x)$.\\
+
+\textbf{Solución:} Asumimos que $\mathcal{E}$ contiene los axiomas del lenguaje. Llamamos $E_1: \forall x ( \forall y ( P(y) \rightarrow Q(x) ) \rightarrow R(x) )$, $E_2: \forall x ( \exists y P(y) \rightarrow S(x) )$, $E_3: \forall x ( S(x) \rightarrow \exists y T(y) )$, $E_4: \exists x \neg R(x)$ y $E_5: \forall y \neg T(y)$. Para probar que $\mathcal{E} \vdash \exists x \neg Q(x)$ utilizaremos reducción al absurdo
+
+\begin{enumerate}
+   \item $\neg \exists x \neg Q(x)$ \hfill (Nueva premisa)
+   \item $\forall x Q(x)$ \quad \hfill (Axioma lógico para cuantificadores y eliminación de doble negación vía tautología)
+   \item $\forall y \neg T(y)$ \hfill (Premisa $E_5$)
+   \item $\neg \exists y T(y)$ \hfill (Axioma lógico para cuantificadores)
+   \item $\forall x ( S(x) \rightarrow \exists y T(y) )$ \hfill (Premisa $E_3$)
+   \item $S(x) \rightarrow \exists y T(y)$ \hfill (Axioma de especialización, $t=x$)
+   \item $\neg \exists y T(y) \rightarrow \neg S(x)$ \hfill (Tautología: Contraposición)
+   \item $\neg S(x)$ \hfill (MP 4, 7)
+   \item $\forall x ( \exists y P(y) \rightarrow S(x) )$ \hfill (Premisa $E_2$)
+   \item $\exists y P(y) \rightarrow S(x)$ \hfill (Axioma de especialización, $t=x$)
+   \item $\neg S(x) \rightarrow \neg \exists y P(y)$ \hfill (Tautología: Contraposición)
+   \item $\neg \exists y P(y)$ \hfill (MP 8, 10)
+   \item $\forall y \neg P(y)$ \hfill (Axioma lógico para cuantificadores)
+   \item $\neg P(y)$ \hfill (Axioma de especialización, $t=y$)
+   \item $\neg P(y) \rightarrow ( P(y) \rightarrow Q(x) )$ \hfill (Tautología)
+   \item $P(y) \rightarrow Q(x)$ \hfill (MP 14, 15)
+   \item $\forall y (P(y) \rightarrow Q(x))$ \hfill (Generalización sobre $y$)
+   \item $\forall x ( \forall y ( P(y) \rightarrow Q(x) ) \rightarrow R(x) )$ \hfill (Premisa $E_1$)
+   \item $\forall y ( P(y) \rightarrow Q(x) ) \rightarrow R(x)$ \hfill (Axioma de especialización, $t=x$)
+   \item $R(x)$ \hfill (MP 17, 19)
+   \item $\forall x R(x)$ \hfill (Generalización sobre $x$)
+   \item $\neg \exists x \neg R(x)$ \hfill (Axioma lógico para cuantificadores y uso de la tautología de doble negación)
+   \item $\exists x \neg R(x)$ \hfill (Premisa $E_4$)
+\end{enumerate}
+Los pasos 22 y 23 nos dan la contradicción deseada. Como la suposición inicial $\neg \exists x \neg Q(x)$ nos lleva a una contradicción con la premisa $E_4$, concluimos que la suposición es falsa, y por lo tanto necesariamente se tiene $\exists x \neg Q(x)$. Esto prueba $\mathcal{E}\vdash \exists x \neg Q(x)$.\\
+\hfill \qed

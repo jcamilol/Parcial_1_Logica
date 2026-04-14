@@ -1,0 +1,12 @@
+\subsection*{\uline{Ejercicio2}}
+Sea $\mathcal{L} = \{ <, 0 \}$ un lenguaje con una relación binaria $<$ y una constante $0$. Considere la teoría $T$ con los axiomas:
+    \begin{itemize}
+        \item $\forall x \neg(x < 0)$
+        \item $\forall x \forall y \forall z ((x < y \wedge y < z) \rightarrow x < z)$
+        \item $\forall x \exists y (x < y)$
+    \end{itemize}
+    Sea $c$ un nuevo símbolo de constante. Muestre que $T_c = T \cup \{ \neg(c < 0) \}$ es consistente. \\
+    Muestre que $T$ tiene un modelo contable y construya explícitamente un modelo $\mathcal{M} = (M, <, 0)$ que satisfaga los axiomas de $T$ y contenga un elemento $c$ tal que la interpretación de $c$ no es igual a $0$.\\
+
+\textbf{Solución:}
+
