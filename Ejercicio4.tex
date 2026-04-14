@@ -2,3 +2,43 @@
 Sea $\mathbb{Z}_2$ el cuerpo de los enteros módulo 2. Exprese los 5 conectivos básicos mediante las operaciones de $\mathbb{Z}_2$.\\
 
 \textbf{Solución:}
+\begin{itemize}
+   \item \textbf{Negación.}
+      \begin{itemize}
+         \item Conectivo: $\neg p$
+         \item Expresión polinomial en $\mathbb{Z}_2$: $p+1\,(\text{mod} 2)$
+         \item Verificación:
+            \input{Tabla1}
+      \end{itemize}
+   \item \textbf{Conjunción.}
+      \begin{itemize}
+         \item Conectivo: $p \wedge q$
+         \item Expresión polinomial en $\mathbb{Z}_2$: $p\cdot q\,(\text{mod} 2)$
+         \item Verificación:
+            \input{Tabla2}
+      \end{itemize}
+   \item \textbf{Disyunción.}
+      \begin{itemize}
+         \item Conectivo: $p \vee q$
+         \item Expresión polinomial en $\mathbb{Z}_2$: $p\cdot q+p+q\,(\text{mod} 2)$
+         \item Verificación:
+            \input{Tabla3}
+      \end{itemize}
+   \item \textbf{Condicional.}
+      \begin{itemize}
+         \item Conectivo: $p \rightarrow q$
+         \item Expresión polinomial en $\mathbb{Z}_2$: $p\cdot q+p+1\,(\text{mod} 2)$
+         \item Verificación:
+            \input{Tabla4}
+      \end{itemize}
+   \item \textbf{Bicondicional.}
+      \begin{itemize}
+         \item Conectivo: $p \leftrightarrow q$
+         \item Expresión polinomial en $\mathbb{Z}_2$: $p+q+1\,(\text{mod} 2)$
+         \item Verificación:
+            \input{Tabla5}
+      \end{itemize}
+
+
+
+\end{itemize}
