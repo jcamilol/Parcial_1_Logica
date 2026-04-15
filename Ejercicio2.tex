@@ -9,4 +9,37 @@ Sea $\mathcal{L} = \{ <, 0 \}$ un lenguaje con una relación binaria $<$ y una c
     Muestre que $T$ tiene un modelo contable y construya explícitamente un modelo $\mathcal{M} = (M, <, 0)$ que satisfaga los axiomas de $T$ y contenga un elemento $c$ tal que la interpretación de $c$ no es igual a $0$.\\
 
 \textbf{Solución:}
+\begin{itemize}
+   \item \textbf{Consistencia de $T_c=T \cup \left\lbrace \neg(c<0)\right\rbrace$.} De acuerdo con el teorema de completitud de Gödel, un conjunto de fórmulas es consistente si y solo si posee un modelo. Para mostrar que $T_c$ es consistente, construimos el siguiente modelo:
+      \begin{itemize}
+         \item Universo: El conjunto de los números naturales $\mathbb{N}=\left\lbrace 0,1,2,\dots \right\rbrace$.
+         \item Interpretación de $<$: La relación de orden estándar ``menor que" en $\mathbb{N}$.
+         \item Interpretación de $0$: El número natural $0$.
+         \item Interpretación de $c$: Asignamos a la nueva constante $c$ el valor de $1$.
+      \end{itemize}
+      Verificación de los axiomas:
+      \begin{itemize}
+         \item $\forall x \neg (x<0)$: En $\mathbb{N}$, ningún elemento es menor que el natural cero, por lo que la fórmula es verdadera.
+         \item Transitividad: El orden estándar en $\mathbb{N}$ es transitivo.
+         \item $\forall x \exists y (x<y)$: Para cualquier número natural $n$, siempre existe el natural $n+1$ tal que $n<n+1$.
+         \item $\neg(c<0)$: Bajo nuestra interpretación $(c=1)$, a sentencia afirma "no es cierto que $1<0$", lo cual es verdadero en la aritmética estándar.
+      \end{itemize}
+      Al existir una estructura $(\mathbb{N},<,0,1)$ que satisface todas las sentencias, la teoría $T_c$ es consistente.
+   \item \textbf{Existencia de un modelo contable de $T$.} El lenguaje $\mathcal{L}$ tiene un alfabeto contable. Según el corolario de Löwenheim-Skolem, si un lenguaje tiene un alfabeto contable y una teoría tiene un modelo, entonces dicha teoría posee un modelo contable. Dado que ya hemos verificado que la estructura de los números naturales $(\mathbb{N},<,0)$ es un modelo de $T$ y dado que el conjunto $\mathbb{N}$ es contable, queda demostrado que $T$ tiene un modelo contable.
+   \item \textbf{Construcción explícita de $\mathcal{M}$ con $c\neq 0$.} Construimos explícitamente la estructura $\mathcal{M}=(M,<,0,c)$ que satisface los axiomas de $T$ y cumple la condición de que la interpretación de $c$ no sea igual a la de $0$:
+      \begin{itemize}
+         \item Dominio ($M$): $\mathbb{N}=\left\lbrace 0,1,2,\dots \right\rbrace$.
+         \item Relación ($<$): $\left\lbrace (n,m)\in \mathbb{N}\times \mathbb{N} \mid n<m \right\rbrace$ (orden usual).
+         \item Constante ($0$): El elemento $0\in \mathbb{N}$.
+         \item Constante ($c$): Definimos la aplicación de la interpretación para $c$ como $\phi(c)=1$.
+      \end{itemize}
+      Justificación:
+      \begin{itemize}
+         \item Axiomas de $T$: Se cumplen en $\mathbb{N}$ como se demostró en el primer item.
+         \item Condición $c\neq 0$: En nuestra construcción, la interpretación de la constante $c$ es el número $1$ y la de la constante $0$ es el número $0$. Dado que $1\neq 0$ en el universo de los números naturales, la condición se satisface estrictamente.
+      \end{itemize}
+      Esta estructura $\mathcal{M}$ es un modelo válido de $T$ donde la interpretación de la nueva constante es distinta del elemento mínimo del orden.
+\end{itemize}
+\hfill\qed
+% M_c ??????????
 
