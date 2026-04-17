@@ -1,5 +1,5 @@
 \subsection*{\uline{Ejercicio5}}
-Sea $K$ un cuerpo y $p(X_1, \dots, X_n) \in K[X_1, \dots, X_n]$. Sea $\overline{p}$ la función polinomial asociada a $p$, definida por:
+    Sea $K$ un cuerpo y $p(X_1, \dots, X_n) \in K[X_1, \dots, X_n]$. Sea $\overline{p}$ la función polinomial asociada a $p$, definida por:
     \begin{equation*}
         \overline{p} : K^n \rightarrow K, \quad (a_1, \dots, a_n) \mapsto p(a_1, \dots, a_n)
     \end{equation*}
@@ -8,4 +8,31 @@ Sea $K$ un cuerpo y $p(X_1, \dots, X_n) \in K[X_1, \dots, X_n]$. Sea $\overline{
 
     ¿Vale la unicidad de $p_\alpha$ para una fórmula $\alpha$ dada?\\
 
-\textbf{Solución:}
+    \textbf{Solución:} Para demostrar que para toda fórmula proposicional $\alpha (p_1,\dots, p_n)$ existe un polinomio $p_\alpha \in \mathbb{Z}_2[X_1,\dots,X_n]$ que representa su función de verdad, procederemos por inducción sobre la estructura de la fórmula $\alpha$:\\
+
+    \textbf{Base de la inducción.} Si $\alpha$ es una variable proposicional $p_i$:
+
+    \begin{itemize}
+       \item Definimos $p_\alpha(X_1,\dots, X_n)=X_i$.
+       \item Para cualquier valuación $v$, $\overline{v}(p_i)=v(p_i)$.
+       \item Evaluando el polinomio: $\overline{p}_\alpha (v(p_1),\dots, v(p_n))=v(p_i)$
+       \item Por lo tanto, $\overline{v}(\alpha)=\overline{p}_\alpha (v(p_1),\dots, v(p_n))$.
+    \end{itemize}
+
+    \textbf{Paso inductivo.} Supongamos que para las fórmulas $\beta$ y $\gamma$ existen los polinomios $p_\beta$ y $p_\gamma$. Analizamos los respectivos conectivos lógicos básicos, haciendo uso de los resultados obtenidos en el \textit{Ejercicio 4}:
+
+    \begin{itemize}
+       \item Negación ($\alpha = \neg \beta$): La función de verdad es $|\neg \beta|=1-|\beta|$. En $\mathbb{Z}_2$, esto equivale a $X+1\ (\text{mod } 2)$. Definimos $p_\alpha=p_\beta +1$.
+       \item Conjunción ($\alpha = \beta \wedge \gamma$): La función de verdad es $|\beta \wedge \gamma|=\text{min}(|\beta|,|\gamma|)$. En aritmética binaria, esto es simplemente el producto. Definimos $p_\alpha=p_\beta \cdot p_\gamma$.
+       \item Disyunción ($\alpha=\beta \vee \gamma$): La función de verdad es $|\beta \vee \gamma|=\max(|\beta|,|\gamma|)$. En el cuerpo $\mathbb{Z}_2$, el máximo de dos valores $a,b\in \left\lbrace 0,1 \right\rbrace$ se expresa como $a+b+a\cdot b \ (\text{mod } 2)$. Definimos $p_\alpha = p_\beta + p_\gamma + p_\beta \cdot p_\gamma$.
+       \item Implicación ($\alpha = \beta \rightarrow \gamma$): La función de verdad se define como $|\beta \rightarrow \gamma|=1-|\beta|+|\beta|\cdot|\gamma|$. En $\mathbb{Z}_2$, esto es $1+p_\beta + p_\beta \cdot p_\gamma$. Definimos $p_\alpha = 1+p_\beta+p_\beta\cdot p_\gamma$.
+       \item Equivalencia ($\alpha=\beta \leftrightarrow \gamma$): La función de verdad se define como $|\beta \leftrightarrow \gamma|=|\beta||\gamma|+(1-|\beta|)(1-|\gamma|)$. En $\mathbb{Z}_2$, esto se simplifica a $1+p_\beta + p_\gamma$. Definimos $p_\alpha = 1+p_\beta + p_\gamma$.
+    \end{itemize}
+    Dado que cualquier fórmula proposicional se construye a partir de variables y una secuencia finita de estos conectivos (lo que Manin denomina ``polinomio lógico"), la aplicación sucesiva de estas reglas garantiza la existencia de un polinomio en $\mathbb{Z}_2[X_1,\dots, X_n]$ para cualquier $\alpha$.  Dado que para todo $a \in \mathbb{Z}_2$ se tiene $a^2 = a$, el polinomio resultante puede reducirse siempre a una forma multilineal, donde cada variable $X_i$ tiene como máximo grado $1$.\\
+
+    \textbf{¿Vale la unicidad de $p_\alpha$ para una fórmula $\alpha$ dada?}
+    \begin{itemize}
+       \item \textbf{Como polinomio formal en $\mathbb{Z}_2[X_1,\dots,X_n]$:} No hay unicidad. Por ejemplo, los polinomios $X_1$ y $X_1^2$ son distintos como elementos del anillo de polinomios, pero definen la misma función de $\mathbb{Z}_2^n$ en $\mathbb{Z}_2$, ya que para todo $a\in\mathbb{Z}_2$ se cumple $a^2=a$. Dado que una fórmula $\alpha$ determina una única función de verdad, pueden existir múltiples polinomios formales que representen la misma función polinomial asociada a $\alpha$.
+       \item \textbf{Como función polinomial $\overline{p}_\alpha: \mathbb{Z}_2^n \to \mathbb{Z}_2$:} Sí hay unicidad. La función de verdad de $\alpha$ está unívocamente determinada por la tabla de verdad de $\alpha$, y el ejercicio exige que $\overline{p}_\alpha$ coincida puntualmente con dicha función. Por lo tanto, la función polinomial asociada a $\alpha$ es única.
+       \item \textbf{Como polinomio multilineal reducido:} Sí hay unicidad. Si exigimos que $p_\alpha$ esté escrito en la forma multilineal (donde cada variable $X_i$ aparece a lo sumo con exponente $1$), entonces la representación es única. Esto se debe a que los monomios multilineales $X_{i_1}\cdots X_{i_k}$ (con $i_1<\cdots<i_k$) forman una base del espacio de funciones de $\mathbb{Z}_2^n$ en $\mathbb{Z}_2$. Toda función booleana admite una única expresión como combinación lineal (con coeficientes en $\mathbb{Z}_2$) de dichos monomios.
+    \end{itemize}
